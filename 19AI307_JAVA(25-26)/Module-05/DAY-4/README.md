@@ -1,67 +1,42 @@
-# Ex.No:5(E) MULTITHREADING -SYNCHRONIZATION
+# Ex.No:5(D) THREAD PRIORITY
 
 ## QUESTION:
-Maintain two int variables a and b, read their initial values from user. Use synchronized block to swap them and print swapped values.
+Write a java program for set the priority and name of the current thread.Consider two threads t1 and t2
 
-Input:
+Note : Read the threadname from the User
 
-Two lines: a and b values
+set the priority as 4 for t1 and set the priority as 2 for t2
 
-Output:
-
-a = <swapped_a>
-
-b = <swapped_b>
-
-<img width="155" height="139" alt="image" src="https://github.com/user-attachments/assets/15a5a1b4-a8ad-4c75-87d6-1c2c4ee9f379" />
+<img width="364" height="144" alt="image" src="https://github.com/user-attachments/assets/76e1cf66-7963-4865-99ff-b1118a65ceb9" />
 
 
 
 ## AIM:
-To read two integer values from the user, use a synchronized block to safely swap them, and display the swapped values.
+To create two threads in Java, read their names from the user, set their priorities (t1 → 4, t2 → 2), and display the updated thread details.
 
 
 ## ALGORITHM :
-1.	Here is the **algorithm** for the given Java program:
-
-### **Algorithm**
-
 1. Start the program.
 
 2. Create a Scanner object to read input from the user.
 
+3. Read the first thread name from the user and store it in name1.
 
-3. Read the first integer value and store it in variable a.
+4. Read the second thread name from the user and store it in name2.
 
+5. Create thread object t1 using name1.
 
-4. Read the second integer value and store it in variable b.
+6. Create thread object t2 using name2.
 
+7. Set the priority of t1 to 4.
 
-5. Create a lock object for synchronization.
+8. Set the priority of t2 to 2.
 
+9. Display the details of both threads using System.out.println().
 
-6. Enter a synchronized block using the lock object.
+10. Close the scanner.
 
-
-7. Inside the synchronized block, swap the values of a and b using a temporary         variable temp.
-
-
-8. Exit the synchronized block.
-
-
-9. Print the updated value of a.
-
-
-10. Print the updated value of b.
-
-
-11. Close the scanner.
-
-
-12. End the program.
-
-
-   
+11. End the program.
 
 
 
@@ -70,34 +45,42 @@ To read two integer values from the user, use a synchronized block to safely swa
 ## PROGRAM:
  ```
 /*
-Program to implement a Synchronization concept using Java
+Program to implement a Thread Priority Concept using Java
 Developed by: SINGAMALA VENKATA SAI KUMAR REDDY
-RegisterNumber:  212223230208
+RegisterNumber: 212223230208
 */
 ```
 
 ## SOURCE CODE:
 
+
 ```
 import java.util.Scanner;
 
-public class Main {
+class MyThread extends Thread {
+    public MyThread(String name) {
+        super(name); 
+    }
+}
+
+public class prog {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int a = Integer.parseInt(sc.nextLine().trim());
-        int b = Integer.parseInt(sc.nextLine().trim());
+        
+        String name1 = sc.nextLine();
+        String name2 = sc.nextLine();
 
-        Object lock = new Object();
+        
+        MyThread t1 = new MyThread(name1);
+        MyThread t2 = new MyThread(name2);
 
-        synchronized (lock) {
-            int temp = a;
-            a = b;
-            b = temp;
-        }
+        t1.setPriority(4);
+        t2.setPriority(2);
 
-        System.out.println("a = " + a);
-        System.out.println("b = " + b);
+        
+        System.out.println(t1);
+        System.out.println(t2);
 
         sc.close();
     }
@@ -107,12 +90,12 @@ public class Main {
 
 
 
-
 ## OUTPUT:
 
-<img width="350" height="238" alt="image" src="https://github.com/user-attachments/assets/6026fce5-b134-4040-b61b-11d35b4c9b68" />
+<img width="656" height="205" alt="image" src="https://github.com/user-attachments/assets/1d72aa01-5077-47f0-b72e-24f071d4a79d" />
+
 
 
 ## RESULT:
-The program successfully swaps the values of variables a and b using synchronization and prints the updated values.
+The program successfully accepts thread names from the user, assigns priorities, and displays the current thread information.
 
